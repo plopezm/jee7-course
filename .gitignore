@@ -1,3 +1,9 @@
 #Intellij
 .idea
 *.iml
+
+#Java
+/**/target/
+
+#Testing
+derby.log

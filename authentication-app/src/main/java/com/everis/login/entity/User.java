@@ -5,8 +5,10 @@ import com.everis.common.entity.AbstractEntity;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "users")
 @NamedQueries({
         @NamedQuery(name="login.entity.User.FindByEmail", query = "SELECT u FROM User u WHERE u.email = :email")
 })

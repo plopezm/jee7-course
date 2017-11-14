@@ -27,6 +27,7 @@ public class LoginService {
     public User createUser(User user){
         em.persist(user);
         em.flush();
+        em.refresh(user);
         return user;
     }
 
