@@ -8,8 +8,12 @@ import javax.ws.rs.core.Response;
 @Path("login")
 public class LoginResource {
 
+    private LoginService loginService;
+
     @GET
     public Response Login(){
+
+
         return Response.status(Response.Status.OK).build();
     }
 
