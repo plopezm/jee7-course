@@ -23,7 +23,7 @@ This course is focused on learning Java EE basics.
 * Sometimes the name of a entity matchs with some reserved word of the database. The solution is to define @Table annotation in the entity.
 * It is possible to use a superclass as @MappedSuperclass to avoid 'id' and 'version' repetition.
 * In User class there must be an attribute called version with @version annotation.
-* UserService must be a @Stateful bean
+* LoginService must be a @Stateful bean
 * When a method is read-only, it is recommended set the transaction as support
 
 ### Solution
