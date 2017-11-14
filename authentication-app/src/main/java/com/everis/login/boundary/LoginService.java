@@ -53,4 +53,11 @@ public class LoginService {
         em.remove(user);
         return user;
     }
+
+    public User validate(User user) {
+        Query query = em.createNamedQuery("login.entity.User.Validate");
+        query.setParameter("email", user.getEmail());
+        query.setParameter("password", user.getPassword());
+        return (User) query.getSingleResult();
+    }
 }

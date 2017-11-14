@@ -11,6 +11,7 @@ import javax.persistence.Table;
 @Table(name = "users")
 @NamedQueries({
         @NamedQuery(name="login.entity.User.FindByEmail", query = "SELECT u FROM User u WHERE u.email = :email")
+        @NamedQuery(name="login.entity.User.Validate", query = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password")
 })
 public class User extends AbstractEntity{
 
