@@ -28,4 +28,4 @@ This course is focused on learning Java EE basics.
 
 ### Solution
 
-The solution is in the "chapter2".
+The solution is in chapter2.
