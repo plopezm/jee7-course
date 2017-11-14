@@ -16,8 +16,9 @@ This course is focused on learning Java EE basics.
 
 ### Help
 
-* You have to use UserService using injection
+* You have to use LoginService using injection.
 
 ### Solution
 
-Solution is in "chapter3"
+The solution is in chapter3.
+
