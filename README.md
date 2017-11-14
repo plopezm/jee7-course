@@ -9,7 +9,7 @@ This course is focused on learning Java EE basics.
     * private long version
     * private String email
     * private String password
-2. Define UserService class for User with the following methods:
+2. Define LoginService class for User with the following methods:
     * public User createUser(User user)
     * public List getAllUsers()
     * public User getUserById(long id)
