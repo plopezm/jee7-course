@@ -15,7 +15,7 @@ This course is focused on learning Java EE basics.
     * public User getUserById(long id)
     * public User getUserByEmail(String email)
     * public User removeUser(long id)
-3. Define the integration tests for each method of UserService class using Derby embedded
+3. Define the integration tests for each method of LoginService class using Derby embedded
 4. Every test must be green :)
 
 ### Help
