@@ -7,6 +7,7 @@ import org.eclipse.persistence.internal.oxm.conversion.Base64;
 
 import javax.inject.Inject;
 import javax.persistence.Basic;
+import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.container.ContainerRequestContext;
@@ -64,8 +65,12 @@ public class BasicAuthenticationFilter implements ContainerRequestFilter {
             return false;
         }
 
-        user = loginService.validate(user);
-        return user != null;
+        User userValidated = null;
+        try {
+            userValidated = loginService.validate(user);
+        }catch (NoResultException ex){
+        }
+        return userValidated != null;
     }
 
     private boolean isAuthorized(){

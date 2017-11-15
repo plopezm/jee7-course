@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "users")
 @NamedQueries({
-        @NamedQuery(name="login.entity.User.FindByEmail", query = "SELECT u FROM User u WHERE u.email = :email")
+        @NamedQuery(name="login.entity.User.FindByEmail", query = "SELECT u FROM User u WHERE u.email = :email"),
         @NamedQuery(name="login.entity.User.Validate", query = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password")
 })
 public class User extends AbstractEntity{
@@ -32,5 +32,10 @@ public class User extends AbstractEntity{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void updateFields(User user) {
+        this.email = user.getEmail();
+        this.password = user.getPassword();
     }
 }

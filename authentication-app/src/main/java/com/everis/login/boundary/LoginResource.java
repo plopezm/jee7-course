@@ -12,10 +12,6 @@ import javax.ws.rs.core.Response;
 @Path("login")
 @BasicAuthentication
 public class LoginResource {
-
-    @Inject
-    private LoginService loginService;
-
     @GET
     public Response Login(){
         return Response.status(Response.Status.OK).build();
@@ -25,6 +21,4 @@ public class LoginResource {
     public Response Logout(){
         return Response.status(Response.Status.OK).build();
     }
-
-
 }

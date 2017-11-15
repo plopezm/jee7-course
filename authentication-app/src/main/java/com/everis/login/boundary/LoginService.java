@@ -54,6 +54,12 @@ public class LoginService {
         return user;
     }
 
+    public User updateUser(User user){
+        User userToModify = this.getUserById(user.getId());
+        userToModify.updateFields(user);
+        return userToModify;
+    }
+
     public User validate(User user) {
         Query query = em.createNamedQuery("login.entity.User.Validate");
         query.setParameter("email", user.getEmail());

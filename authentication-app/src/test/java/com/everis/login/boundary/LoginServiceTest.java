@@ -5,10 +5,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 
 import java.util.List;
 
@@ -124,4 +121,53 @@ public class LoginServiceTest {
         tx.rollback();
     }
 
+    @Test
+    public void updateUser() throws Exception {
+        EntityTransaction tx = underTest.getEm().getTransaction();
+        //Given
+        User user = new User();
+        user.setEmail("pabloplm@gmail.com");
+        user.setPassword("password");
+        //When
+        tx.begin();
+        underTest.createUser(user);
+        user.setPassword("otherPassword");
+        underTest.updateUser(user);
+        user = underTest.getUserById(user.getId());
+        //Then
+        assertNotNull(user);
+        assertEquals("otherPassword", user.getPassword());
+        tx.rollback();
+    }
+
+    @Test
+    public void validate() throws Exception {
+        EntityTransaction tx = underTest.getEm().getTransaction();
+        //Given
+        User user = new User();
+        user.setEmail("pabloplm@gmail.com");
+        user.setPassword("password");
+        //When
+        tx.begin();
+        underTest.createUser(user);
+        User validatedUser = underTest.validate(user);
+        //Then
+        assertNotNull(validatedUser);
+        assertEquals(user.getId(), validatedUser.getId());
+        tx.rollback();
+    }
+
+    @Test(expected = NoResultException.class)
+    public void validateNotFound() throws Exception {
+        EntityTransaction tx = underTest.getEm().getTransaction();
+        //Given
+        User user = new User();
+        user.setEmail("pabloplm@gmail.com");
+        user.setPassword("password");
+        //When
+        tx.begin();
+        User validatedUser = underTest.validate(user);
+        //Then
+        tx.rollback();
+    }
 }
