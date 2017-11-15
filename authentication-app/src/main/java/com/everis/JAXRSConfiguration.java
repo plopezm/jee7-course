@@ -1,4 +1,4 @@
-package com.ever;
+package com.everis;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

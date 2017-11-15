@@ -6,7 +6,6 @@ import com.everis.security.boundary.BasicAuthentication;
 import org.eclipse.persistence.internal.oxm.conversion.Base64;
 
 import javax.inject.Inject;
-import javax.persistence.Basic;
 import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -53,6 +52,8 @@ public class BasicAuthenticationFilter implements ContainerRequestFilter {
         final String usernameAndPassword = new String(Base64.base64Decode(authorization.getBytes()));
         final StringTokenizer tokenizer = new StringTokenizer(usernameAndPassword, ":");
 
+        if(tokenizer.countTokens() < 2)
+            return null;
         User user = new User();
         user.setEmail(tokenizer.nextToken());
         user.setPassword(tokenizer.nextToken());
