@@ -6,7 +6,7 @@ This course is focused on learning Java EE basics.
 
 1. Create a JAX-RS resource to login into the server if the user matchs
     * Security must be performed using basic authentication header
-    * Create a new method called "validate(User user)". This method will validate that the email and the password are correct. This method must be tested
+    * Create a new method called "validate(User user)" in LoginService. This method will validate that the email and the password are correct. This method must be tested
 2. Create a JAX-RS resource to logout
 3. Create a JAX-RS resource to get all users
     * Security must be performed using basic authentication header
