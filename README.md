@@ -16,6 +16,7 @@ This course is focused on learning Java EE basics.
     * Security must be performed using basic authentication header
 6. Create a JAX-RS resource to update a user
     * Security must be performed using basic authentication header
+    * Implement update method in LoginService
 7. Create a JAX-RS resource to delete an user
     * Security must be performed using basic authentication header
 8. Create the necessary datasource in Payara
@@ -24,7 +25,7 @@ This course is focused on learning Java EE basics.
 ### Help
 
 * You have to use LoginService using injection.
-* It is recommended to perform a ContainerRequestFilter (similar to interceptors for JAX-RS) with a custom annotation.
+* It is recommended to perform a ContainerRequestFilter (similar to interceptors for JAX-RS) with a custom annotation to implement the basic authorization.
 
 ### Solution
 
