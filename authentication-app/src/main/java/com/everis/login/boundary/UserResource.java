@@ -1,20 +1,17 @@
 package com.everis.login.boundary;
 
+import com.everis.common.boundary.Logged;
 import com.everis.login.entity.User;
 import com.everis.security.boundary.BasicAuthentication;
 
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
-import javax.ws.rs.POST;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.*;
 import java.util.List;
 
 @Path("users")
+@Logged
 @BasicAuthentication
+@Produces({"application/json"})
 public class UserResource {
 
     @Inject

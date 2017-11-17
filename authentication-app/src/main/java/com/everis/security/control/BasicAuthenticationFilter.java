@@ -3,6 +3,7 @@ package com.everis.security.control;
 import com.everis.login.boundary.LoginService;
 import com.everis.login.entity.User;
 import com.everis.security.boundary.BasicAuthentication;
+import com.everis.security.exceptions.UnauthorizedException;
 import org.eclipse.persistence.internal.oxm.conversion.Base64;
 
 import javax.inject.Inject;
@@ -93,7 +94,7 @@ public class BasicAuthenticationFilter implements ContainerRequestFilter {
         final Response errResponse = Response.status(Response.Status.UNAUTHORIZED).build();
 
         if(!isAuthorized())
-            containerRequestContext.abortWith(errResponse);
+            throw new UnauthorizedException("User or password not valid");
     }
 
 }
