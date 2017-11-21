@@ -15,7 +15,6 @@ Now we have a small security system based on Basic authentication. If you have e
 
 ### Help
 
-* When a SQL queries returns null an exception is launched.
 * Could be interesting to define a exception if an user is not registered into the system
 * If JAX-RS does not find a serializer, probably you will need to add @Produces({"application/json"}) to each JAX-RS resource
 
