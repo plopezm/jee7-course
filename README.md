@@ -12,6 +12,7 @@ Now we have a complete security system based on Basic authentication. The proble
 2. Mark with @PasswordEncoded the service methods "createUser", "updateUser" and "validate" from LoginService.
 3. From User.class, email must be unique and email and password cannot be null.
 4. Ensure that the tests are still working.
+5. In order to improve the efficiency it is necessary to set "email" as index using JPA in User.class
 
 ### Help
 
