@@ -6,7 +6,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users",
+        indexes = {
+                @Index(name = "index_users_email", columnList = "email", unique = true)
+        }
+)
 @NamedQueries({
         @NamedQuery(name="login.entity.User.FindByEmail", query = "SELECT u FROM User u WHERE u.email = :email"),
         @NamedQuery(name="login.entity.User.GetUserSalt", query = "SELECT u.salt FROM User u WHERE u.email = :email"),

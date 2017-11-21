@@ -29,7 +29,7 @@ public class PasswordEncoder {
     @Inject
     private LoginService loginService;
 
-    public static String getSecurePassword(String passwordToHash, byte[] salt, String digestAlgorithm) {
+    private static String getSecurePassword(String passwordToHash, byte[] salt, String digestAlgorithm) {
         String generatedPassword = passwordToHash;
         try {
             //Create MessageDigest instance for SHA512 (depends on the annotation value, by default it will be SHA512)
@@ -55,7 +55,7 @@ public class PasswordEncoder {
     }
 
     //Add salt
-    public static byte[] generateSalt(String secureRandomType, String secureRandomImpl){
+    private static byte[] generateSalt(String secureRandomType, String secureRandomImpl){
         //Create array for salt
         byte[] salt = new byte[64];
 
@@ -84,10 +84,10 @@ public class PasswordEncoder {
         Arrays.asList(ctx.getParameters()).forEach((obj) -> {
             if(obj instanceof User){
                 User user = (User) obj;
-                try {
-                    byte[] userSalt = this.loginService.getUserSalt(user.getEmail());
+                byte[] userSalt = this.loginService.getUserSalt(user.getEmail());
+                if(userSalt != null){
                     user.setSalt(userSalt);
-                }catch (NoResultException ex){
+                }else{
                     user.setSalt(generateSalt(secureRandomType, secureRandomImpl));
                 }
                 user.setPassword(getSecurePassword(user.getPassword(), user.getSalt(), digestAlgorithm));

@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
@@ -71,9 +72,14 @@ public class LoginService {
         return (User) query.getSingleResult();
     }
 
-    public byte[] getUserSalt(String email) {
+    @TransactionAttribute(value = TransactionAttributeType.SUPPORTS)
+    public byte[] getUserSalt(String email){
         Query query = em.createNamedQuery("login.entity.User.GetUserSalt", byte[].class);
         query.setParameter("email", email);
-        return (byte[]) query.getSingleResult();
+        try {
+            return (byte[]) query.getSingleResult();
+        }catch (NoResultException ex){
+            return null;
+        }
     }
 }
