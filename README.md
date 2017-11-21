@@ -9,7 +9,7 @@ Now we have a complete security system based on Basic authentication. The proble
 ### Exercise
 
 1. Create a new interceptor to hash the password of a user received. We are going to use SHA512 algorithm to do it. The interceptor requires an annotation to bind the interceptor with other methods or classes. The name of the annotation must be @PasswordEncoded
-2. Mark with @Password encoded the service methods "createUser", "updateUser" and "validate" from LoginService.
+2. Mark with @PasswordEncoded the service methods "createUser", "updateUser" and "validate" from LoginService.
 3. From User.class, email must be unique and email and password cannot be null.
 4. Ensure that the tests are still working.
 
