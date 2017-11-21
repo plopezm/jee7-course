@@ -4,7 +4,7 @@ This course is focused on learning Java EE basics.
 
 ### Introduction
 
-Now we have a complete security system based on Basic authentication. The problem is that the passwords are stored directly into the database so anyone can access to the database an see the password in clear text. The solution to this problem is create a hash of the password and store it. In addition we can use a "salt" per user in order to randomize more the hash produced.
+Now we have a complete security system based on Basic authentication. The problem is that the passwords are stored directly into the database so anyone can access to the database an see the password in clear text. The solution to this problem is create a hash of the password and store it. In addition we can use a "salt" per user (You have to create a new attribute called "salt" in User.class) in order to randomize more the hash produced.
 
 ### Exercise
 
