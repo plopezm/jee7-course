@@ -19,6 +19,7 @@ Now we have a complete security system based on Basic authentication. The proble
 * Salt field MUST not be showed in json responses
 * In addition you can hide "version" field in the same way that "salt".
 * It is interesting to understand what a hash algorithm is and what a salt is.
+* Glassfish uses MOXy by default, probably you have to disable it in order to use Jackson in JAXRS application
 
 ### Solution
 
