@@ -1,6 +1,7 @@
 package com.everis.login.boundary;
 
 import com.everis.login.entity.User;
+import com.everis.security.boundary.PasswordEncoded;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -24,6 +25,7 @@ public class LoginService {
         this.em = em;
     }
 
+    @PasswordEncoded
     public User createUser(User user){
         em.persist(user);
         em.flush();
@@ -54,16 +56,24 @@ public class LoginService {
         return user;
     }
 
+    @PasswordEncoded
     public User updateUser(User user){
         User userToModify = this.getUserById(user.getId());
         userToModify.updateFields(user);
         return userToModify;
     }
 
+    @PasswordEncoded
     public User validate(User user) {
         Query query = em.createNamedQuery("login.entity.User.Validate");
         query.setParameter("email", user.getEmail());
         query.setParameter("password", user.getPassword());
         return (User) query.getSingleResult();
+    }
+
+    public byte[] getUserSalt(String email) {
+        Query query = em.createNamedQuery("login.entity.User.GetUserSalt", byte[].class);
+        query.setParameter("email", email);
+        return (byte[]) query.getSingleResult();
     }
 }

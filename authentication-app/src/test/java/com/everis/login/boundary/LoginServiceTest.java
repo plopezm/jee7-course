@@ -54,6 +54,8 @@ public class LoginServiceTest {
         tx.begin();
         for(int i =0; i< 10; i++) {
             User user = new User();
+            user.setEmail("user"+i);
+            user.setPassword("test");
             underTest.createUser(user);
         }
         //Then
