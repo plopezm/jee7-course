@@ -44,7 +44,7 @@ public class LoginService {
     public User getUserById(long id){
         User user = em.find(User.class, id);
         if(user == null)
-            throw new AuthUserNotFound();
+            throw new AuthUserNotFound("User not found");
         return user;
     }
 

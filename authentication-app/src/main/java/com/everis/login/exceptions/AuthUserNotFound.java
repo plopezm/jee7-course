@@ -4,7 +4,7 @@ import javax.ejb.ApplicationException;
 
 @ApplicationException(rollback = true)
 public class AuthUserNotFound extends RuntimeException{
-    public AuthUserNotFound(){
-        super("User not found");
+    public AuthUserNotFound(String msg){
+        super(msg);
     }
 }
