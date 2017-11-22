@@ -39,7 +39,10 @@ public class LoginService {
 
     @TransactionAttribute(value = TransactionAttributeType.SUPPORTS)
     public User getUserById(long id){
-        return em.find(User.class, id);
+        User user = em.find(User.class, id);
+        if(user == null)
+            throw new AuthUserNotFound();
+        return user;
     }
 
     @TransactionAttribute(value = TransactionAttributeType.SUPPORTS)
@@ -57,8 +60,6 @@ public class LoginService {
 
     public User updateUser(User user){
         User userToModify = this.getUserById(user.getId());
-        if(userToModify == null)
-            throw new AuthUserNotFound();
         userToModify.updateFields(user);
         return userToModify;
     }
