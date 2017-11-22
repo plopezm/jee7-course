@@ -1,7 +1,6 @@
 package com.everis.login.boundary;
 
 import com.everis.login.entity.User;
-import com.everis.login.exceptions.AuthUserNotFound;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -139,20 +138,6 @@ public class LoginServiceTest {
         assertNotNull(user);
         assertEquals("otherPassword", user.getPassword());
         tx.rollback();
-    }
-
-    @Test(expected = AuthUserNotFound.class)
-    public void updateUserNotFound() throws Exception {
-        EntityTransaction tx = underTest.getEm().getTransaction();
-        //Given
-        User user = new User();
-        user.setId(12345);
-        user.setEmail("pabloplm@gmail.com");
-        user.setPassword("password");
-        //When
-        tx.begin();
-        underTest.updateUser(user);
-        //Then
     }
 
     @Test

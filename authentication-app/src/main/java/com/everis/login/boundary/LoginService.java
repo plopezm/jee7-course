@@ -1,7 +1,6 @@
 package com.everis.login.boundary;
 
 import com.everis.login.entity.User;
-import com.everis.login.exceptions.AuthUserNotFound;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -40,8 +39,6 @@ public class LoginService {
     @TransactionAttribute(value = TransactionAttributeType.SUPPORTS)
     public User getUserById(long id){
         User user = em.find(User.class, id);
-        if(user == null)
-            throw new AuthUserNotFound();
         return user;
     }
 
