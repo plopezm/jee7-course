@@ -90,6 +90,14 @@ public class LoginServiceTest {
         tx.rollback();
     }
 
+    @Test(expected = AuthUserNotFound.class)
+    public void getUserByIdNotFound() throws Exception {
+        //Given
+        //When
+        User userCreated = underTest.getUserById(12345);
+        //Then
+    }
+
     @Test
     public void getUserByEmail() throws Exception {
         EntityTransaction tx = underTest.getEm().getTransaction();
