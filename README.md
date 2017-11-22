@@ -4,7 +4,7 @@ This course is focused on learning Java EE basics.
 
 ### Introduction
 
-Now we have a small security system based on Basic authentication. If you have executed the application you probably have been noticed that the error requests show ugly output. To solve this I am going to introduce the exception mappers. An exception mapper is catches the exceptions and transform them into a custom ouput for JAX-RS.
+Now we have a small security system based on Basic authentication. If you have executed the application you probably have been noticed that the error requests show ugly output. To solve this I am going to introduce the exception mappers. An exception mapper catches the exceptions and transform them into a custom ouput for JAX-RS.
 
 ### Exercise
 
@@ -15,7 +15,6 @@ Now we have a small security system based on Basic authentication. If you have e
 
 ### Help
 
-* When a SQL queries returns null an exception is launched.
 * Could be interesting to define a exception if an user is not registered into the system
 * If JAX-RS does not find a serializer, probably you will need to add @Produces({"application/json"}) to each JAX-RS resource
 
