@@ -1,6 +1,7 @@
 package com.everis.login.boundary;
 
 import com.everis.login.entity.User;
+import com.everis.login.exceptions.AuthUserNotFound;
 import com.everis.security.boundary.PasswordEncoded;
 
 import javax.ejb.Stateless;
@@ -60,6 +61,8 @@ public class LoginService {
     @PasswordEncoded
     public User updateUser(User user){
         User userToModify = this.getUserById(user.getId());
+        if(userToModify == null)
+            throw new AuthUserNotFound();
         userToModify.updateFields(user);
         return userToModify;
     }

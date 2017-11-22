@@ -35,8 +35,10 @@ public class UserResource {
     }
 
     @PUT
+    @Path("{id}")
     @Consumes({"application/json"})
-    public User updateUser(User user){
+    public User updateUser(@PathParam("id") long id, User user){
+        user.setId(id);
         return loginService.updateUser(user);
     }
 
