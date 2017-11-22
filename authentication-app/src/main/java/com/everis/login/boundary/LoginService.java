@@ -1,6 +1,7 @@
 package com.everis.login.boundary;
 
 import com.everis.login.entity.User;
+import com.everis.login.exceptions.AuthUserNotFound;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -56,6 +57,8 @@ public class LoginService {
 
     public User updateUser(User user){
         User userToModify = this.getUserById(user.getId());
+        if(userToModify == null)
+            throw new AuthUserNotFound();
         userToModify.updateFields(user);
         return userToModify;
     }
