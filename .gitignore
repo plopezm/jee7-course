@@ -1,9 +1,12 @@
 #Intellij
 .idea
 *.iml
+.vscode
+.project
 
 #Java
 /**/target/
+/**/bin/
 
 #Testing
 derby.log
