@@ -3,6 +3,8 @@
 *.iml
 .vscode
 .project
+.settings
+.classpath
 
 #Java
 /**/target/
