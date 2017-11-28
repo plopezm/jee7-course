@@ -94,7 +94,7 @@ public class LoginServiceTest {
     public void getUserByIdNotFound() throws Exception {
         //Given
         //When
-        User userCreated = underTest.getUserById(12345);
+        underTest.getUserById(12345);
         //Then
     }
 
@@ -191,7 +191,7 @@ public class LoginServiceTest {
         user.setPassword("password");
         //When
         tx.begin();
-        User validatedUser = underTest.validate(user);
+        underTest.validate(user);
         //Then
         tx.rollback();
     }

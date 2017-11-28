@@ -9,13 +9,11 @@ import org.eclipse.persistence.internal.oxm.conversion.Base64;
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.container.ResourceInfo;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
-import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -76,8 +74,6 @@ public class BasicAuthenticationFilter implements ContainerRequestFilter {
     }
 
     private boolean isAuthorized(){
-        HttpSession session = servletRequest.getSession();
-
         Method resourceMethod = resourceInfo.getResourceMethod();
         BasicAuthentication basicAuthentication = resourceMethod.getDeclaredAnnotation(BasicAuthentication.class);
 
@@ -91,10 +87,10 @@ public class BasicAuthenticationFilter implements ContainerRequestFilter {
 
     @Override
     public void filter(ContainerRequestContext containerRequestContext) throws IOException {
-        final Response errResponse = Response.status(Response.Status.UNAUTHORIZED).build();
-
-        if(!isAuthorized())
+        if(!isAuthorized()){
+            LOG.warning("User not authorized");
             throw new UnauthorizedException("User or password not valid");
+        }
     }
 
 }
